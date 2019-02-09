@@ -1,0 +1,48 @@
+settings:
+  symbol: "§d§l" # Symbol displayed on the compass to represent this kind of trackers positions.
+  temp:   "☙"    # Advanced: Symbol temporary used by the plugin, must be unique, 1 char and not used in "symbol".
+
+  auto_activated: true # If true, the tracker is automatically activated when a position is created
+
+locales:
+  en:
+    name: "death"
+
+    list: "{prefix}&rDeath coordinates: {list}&r."
+    list_coord: "&6x: &c{x} &r/ &6z: &c{z}"
+    list_empty: "{prefix}&rNo death coordinates."
+
+    START: "{prefix}&6You are now tracking your &elast death&6 position."
+    STOP: "{prefix}&6You no longer track your &elast death&6 position."
+
+    help:
+      noargs: |
+        &r- &c/{command} &e{tracker}
+        &7  Show your last death coordinates.
+      START: |
+        &r- &c/{command} &e{tracker} &6{START}
+        &7  Begin the tracking of your last death coordinate.
+      STOP: |
+        &r- &c/{command} &e{tracker} &6{STOP}
+        &7  End the tracking of your last death coordinate.
+
+  fr:
+    name: "mort"
+
+    list: "{prefix}&rDernière mort: {list}&r."
+    list_coord: "&6x: &c{x} &r/ &6z: &c{z}"
+    list_empty: "{prefix}&rPas de coordinées de mort."
+
+    START: "{prefix}&6Tu pistes maintenant &eta dernière mort&6."
+    STOP: "{prefix}&6Tu ne pistes plus &eta dernière mort&6."
+
+    help:
+      noargs: |
+        &r- &c/{command} &e{tracker}
+        &7  Affiche les coordonnées de ta dernière mort.
+      START: |
+        &r- &c/{command} &e{tracker} &6{START}
+        &7  Démarre le pistage de ta dernière mort.
+      STOP: |
+        &r- &c/{command} &e{tracker} &6{STOP}
+        &7  Arrête le pistage de ta dernière mort.
