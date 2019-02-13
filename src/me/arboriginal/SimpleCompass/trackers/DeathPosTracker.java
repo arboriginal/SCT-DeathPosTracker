@@ -38,7 +38,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   
   @Override
   public String version() {
-    return "4";
+    return "5";
   }
 
   // ----------------------------------------------------------------------------------------------
@@ -83,6 +83,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   // Targets methods
   // ----------------------------------------------------------------------------------------------
 
+  @Override
   public double[] get(Player player, String name) {
     double[] coords = super.get(player, name);
 
@@ -111,6 +112,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
     return list;
   }
 
+  @Override
   public boolean set(Player player, String name, double[] coords) {
     if (super.set(player, name, coords)) {
       List<String> list = sc.datas.activeTargetsList(player, trackerID());
@@ -129,6 +131,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   // Command methods
   // ----------------------------------------------------------------------------------------------
 
+  @Override
   public List<String> commandSuggestions(Player player, String[] args, HashMap<String, Object> parsed) {
     if (args.length > 2) return null;
     return super.commandSuggestions(player, args, parsed);
