@@ -38,7 +38,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   
   @Override
   public String version() {
-    return "3";
+    return "4";
   }
 
   // ----------------------------------------------------------------------------------------------
@@ -130,6 +130,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   // ----------------------------------------------------------------------------------------------
 
   public List<String> commandSuggestions(Player player, String[] args, HashMap<String, Object> parsed) {
+    if (args.length > 2) return null;
     return super.commandSuggestions(player, args, parsed);
   }
 
