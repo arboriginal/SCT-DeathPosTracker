@@ -23,6 +23,25 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   }
 
   // ----------------------------------------------------------------------------------------------
+  // Tracker methods
+  // ----------------------------------------------------------------------------------------------
+
+  @Override
+  public String github() {
+    return "arboriginal/SCT-DeathPosTracker";
+  }
+
+  @Override
+  public String trackerID() {
+    return "DEATH_POSITION";
+  }
+  
+  @Override
+  public String version() {
+    return "3";
+  }
+
+  // ----------------------------------------------------------------------------------------------
   // Listener methods
   // ----------------------------------------------------------------------------------------------
 
@@ -58,15 +77,6 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
       return TargetSelector.NONE;
 
     return super.requireTarget(action);
-  }
-
-  // ----------------------------------------------------------------------------------------------
-  // Tracker methods
-  // ----------------------------------------------------------------------------------------------
-
-  @Override
-  public String trackerID() {
-    return "DEATH_POSITION";
   }
 
   // ----------------------------------------------------------------------------------------------
