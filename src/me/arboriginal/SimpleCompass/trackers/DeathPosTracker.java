@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import com.google.common.collect.ImmutableMap;
 import me.arboriginal.SimpleCompass.plugin.AbstractTracker;
 import me.arboriginal.SimpleCompass.plugin.SimpleCompass;
@@ -35,10 +36,10 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   public String trackerID() {
     return "DEATH_POSITION";
   }
-  
+
   @Override
   public String version() {
-    return "5";
+    return "6";
   }
 
   // ----------------------------------------------------------------------------------------------
@@ -47,12 +48,20 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
 
   @EventHandler
   public void onPlayerDeath(PlayerDeathEvent event) {
-    Player   player = event.getEntity();
-    double[] coords = new double[] { player.getLocation().getX(), player.getLocation().getZ() };
-    long     target = CacheUtil.now() + sc.config.getInt("delays.death_position") * 1000;
+    Player player = event.getEntity();
+    if (!hasPermission(player)) return;
+    set(player, "" + (CacheUtil.now() + settings.getInt("settings.keep_position") * 1000),
+        new double[] { player.getLocation().getX(), player.getLocation().getZ() });
+  }
 
-    if (set(player, "" + target, coords) && settings.getBoolean("settings.auto_activated"))
-      activate(player, "" + target, false);
+  @EventHandler
+  public void onPlayerRespawn(PlayerRespawnEvent event) {
+    if (!settings.getBoolean("settings.auto_activated")) return;
+    Player player = event.getPlayer();
+    if (!hasPermission(player)) return;
+    String target = lastDeath(player);
+    if (target == null) return;
+    activate(player, "" + target, false);
   }
 
   // ----------------------------------------------------------------------------------------------
@@ -116,6 +125,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   public boolean set(Player player, String name, double[] coords) {
     if (super.set(player, name, coords)) {
       List<String> list = sc.datas.activeTargetsList(player, trackerID());
+      list.addAll(availableTargets(player, ""));
 
       if (!list.isEmpty()) list.forEach(target -> {
         if (!target.equals(name)) del(player, target);
@@ -168,6 +178,10 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   // ----------------------------------------------------------------------------------------------
   // Specific methods
   // ----------------------------------------------------------------------------------------------
+
+  private boolean hasPermission(Player player) {
+    return player.hasPermission("scompass.track.DEATH_POSITION") || player.hasPermission("scompass.track.*");
+  }
 
   private String lastDeath(Player player) {
     for (String name : super.list(player, null, "")) if (get(player, name) != null) return name;
