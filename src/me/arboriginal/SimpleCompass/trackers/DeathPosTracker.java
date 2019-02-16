@@ -39,7 +39,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
 
   @Override
   public String version() {
-    return "6";
+    return "7";
   }
 
   // ----------------------------------------------------------------------------------------------

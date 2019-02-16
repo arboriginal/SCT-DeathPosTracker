@@ -1,3 +1,6 @@
+# You can find the default config with description of parameters here:
+# https://github.com/arboriginal/SCT-DeathPosTracker/blob/master/src/settings.yml
+
 settings:
   check_update: true # If true, when you (re)load the plugin, it try to check if a new version is available
   
@@ -11,7 +14,7 @@ settings:
 
 locales:
   en:
-    name: "death"
+    name: "death" # Only use alphabetic and numeric values, not space
 
     list: "{prefix}&rDeath coordinates: {list}&r."
     list_coord: "&6x: &c{x} &r/ &6z: &c{z}"
@@ -31,8 +34,10 @@ locales:
         &r- &c/{command} &e{tracker} &6{STOP}
         &7  End the tracking of your last death coordinate.
 
+    target_auto_disabled: "{prefix}&3You've reached your death place, tracking disabled."
+
   fr:
-    name: "mort"
+    name: "mort" # N'utilise que des chiffres et des lettres, pas d'espace
 
     list: "{prefix}&rDernière mort: {list}&r."
     list_coord: "&6x: &c{x} &r/ &6z: &c{z}"
@@ -51,3 +56,5 @@ locales:
       STOP: |
         &r- &c/{command} &e{tracker} &6{STOP}
         &7  Arrête le pistage de ta dernière mort.
+
+    target_auto_disabled: "{prefix}&3Tu as atteint ton lieu de mort, pistage désactivé."
