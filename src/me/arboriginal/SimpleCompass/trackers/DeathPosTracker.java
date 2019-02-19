@@ -39,7 +39,7 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
 
   @Override
   public String version() {
-    return "7";
+    return "8";
   }
 
   // ----------------------------------------------------------------------------------------------
@@ -93,13 +93,21 @@ public class DeathPosTracker extends AbstractTracker implements Listener {
   // ----------------------------------------------------------------------------------------------
 
   @Override
+  public List<String> autoloadTargets(Player player, String startWith) {
+    return new ArrayList<String>();
+  }
+
+  @Override
   public double[] get(Player player, String name) {
     double[] coords = super.get(player, name);
 
     if (coords != null)
       try {
         long until = Long.parseLong(name);
-        if (CacheUtil.now() > until) return null;
+        if (CacheUtil.now() > until) {
+          sendMessage(player, "target_expired");
+          return null;
+        }
       }
       catch (Exception e) {
         return null;
