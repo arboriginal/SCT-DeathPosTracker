@@ -8,6 +8,8 @@ It allows to track the last death position.
 - Drop the [jar file](https://github.com/arboriginal/SCT-DeathPosTracker/releases) into your `plugins/SimpleCompass/trackers` folder
 - Restart your server.
 
+**BEWARE:** The plugin [SavageDeathCompass](https://dev.bukkit.org/projects/savagedeathcompass) seems not to be compatible with this tracker, resulting to duplicate bossbar compass when you die and receive its compass item. This will be fixed in a future version maybe, but as I don't use this plugin and have no time, for now it's not.
+
 ## Configuration
 
 Edit the file `plugins/SimpleCompass/trackers/DeathPosTracker.yml` (automatically created the first time the tracker is loaded).
