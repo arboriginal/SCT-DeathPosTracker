@@ -15,6 +15,11 @@ settings:
   auto_activated: true # If true, the tracker is automatically activated when a position is created
   auto_disabled: 5 # If player closer than this (in blocks) from the target, the tracking stop automatically (0 to disable).
 
+  # Those parameters are used to highlight active targets when you facing them
+  hl_angle: 0        # Angle in degree (integer) centered on compass middle point to be considered as faced (for example 30 means from 60° to 120°)
+  hl_symbol: "§b§l☠" # Symbol displayed on the compass to represent active targets you are facing (require hl_angle > 0)
+  hl_temp: "♴"       # Advanced: Symbol temporary used by the plugin (only used when hl_angle > 0)
+
 locales:
   en:
     name: "death" # Only use alphabetic and numeric values, not space
