@@ -8,7 +8,9 @@ It allows to track the last death position.
 - Drop the [jar file](https://github.com/arboriginal/SCT-DeathPosTracker/releases) into your `plugins/SimpleCompass/trackers` folder
 - Restart your server.
 
-**BEWARE:** The plugin [SavageDeathCompass](https://dev.bukkit.org/projects/savagedeathcompass) seems not to be compatible with this tracker, resulting to duplicate bossbar compass when you die and receive its compass item. This will be fixed in a future version maybe, but as I don't use this plugin and have no time, for now it's not.
+**BEWARE:** Apparently, this tracker can have issue with the plugin [SavageDeathCompass](https://dev.bukkit.org/projects/savagedeathcompass) (I'm not using it), resulting in duplicate bossbar compass when you die and receive its compass item. [the_happy_helper](https://www.spigotmc.org/members/the_happy_helper.650977/) explain [here](https://www.spigotmc.org/threads/simplecompass.351093/page-7#post-3320412):
+
+> I managed to find a fix for the dupe problem with SavageDeathCompass, all I had to do was change "target-delay:" in SavageDeathCompass's config.yml to a higher value
 
 ## Configuration
 
